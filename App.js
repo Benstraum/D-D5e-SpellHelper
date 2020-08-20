@@ -10,16 +10,15 @@ function App(props) {
     props.dispatch({type:'GET_ALL_SPELLS'})
   },[]);
   return (
-    <ImageBackground source={require('./assets/background.jpg')} style={styles.bgImage}>
+    <View style={styles.bgImage}>
       <Feed />
-    </ImageBackground>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -27,10 +26,7 @@ const styles = StyleSheet.create({
     height:'100%',
     width:'100%',
     flex:1,
-    zIndex:0,
-    position:'absolute',
-    opacity:0.7,
-    backgroundColor: '#313131',
+    backgroundColor: '#21211f',
 },
 });
 

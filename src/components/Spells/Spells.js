@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
 import 'react-native-gesture-handler'
 import React, { useEffect, useState } from 'react';
 import { Text, View, ScrollView } from 'react-native';
@@ -24,18 +23,14 @@ const Spells = (props) => {
         <ScrollView>
             {
                 level.map((Lv, index) => (<div style={{}} key={index} className="mappedLevels">
-                    <div style={{ backgroundColor: 'black', width: '100%', padding: '15px', position: 'sticky', top: 0 }}>
+                    <div style={{ backgroundColor: 'black', width: '100%', padding: '15px', position: 'sticky', top: 0, zIndex:1 }}>
                         <Text style={{ color: 'white', fontSize: '18px', textAlign: 'center', justifyContent: 'top', opacity: 1 }}>Level {Lv}</Text>
                         <Text style={{ color: 'white', float: 'right', backgroundColor: 'black' }}>Total: {spells.filter(item => item.spell_level === Lv).length}</Text>
                     </div>
                     <View style={{ position: 'relative' }}>
                         {
                             spells.filter(item => item.spell_level === Lv).map((item, i) => (
-                                <div key={i}>
                                     <SpellTabMapItem key={i} item={item} index={i} selectSpell={selectSpell} />
-                                    <Divider />
-                                </div>
-
                             ))
                         }
                     </View>

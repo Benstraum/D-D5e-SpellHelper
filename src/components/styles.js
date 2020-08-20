@@ -3,21 +3,23 @@ import {StyleSheet} from 'react-native'
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
+        backgroundColor:'#21211f'
     },
     text: {
         fontSize: 12,
-        color: 'black'
+        color: 'white'
     },
     h1:{
         fontSize: 18,
-        color: 'black',
+        color: 'white',
     },
     spellText:{
         fontSize:16,
-        color: 'black',
-        padding:'10'
+        color: 'white',
+        padding:'5'
+    },
+    bgImage:{
+        backgroundColor:'black'
     }
 });
 export default styles;

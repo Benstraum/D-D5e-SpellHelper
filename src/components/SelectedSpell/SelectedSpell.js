@@ -6,25 +6,26 @@ import { Item } from 'semantic-ui-react'
 import styles from '../styles'
 
 const SelectedSpell = (props) => {
-  console.log(props.spell)
-  let spell = props.spell
+    console.log(props.spell)
+    let spell = props.spell
     return (
-        <View>
+        <View style={styles.container}>
             <Item>
                 <Item.Content>
-                    <Item.Header><Text style={{ color: 'red', fontSize:20 }}>{spell.spell_name}</Text></Item.Header>
+                    <Item.Header><Text style={{ color: 'red', fontSize: 20 }}>{spell.spell_name}</Text></Item.Header>
                     <Item.Meta>
-                       <Text style={styles.spellText}>{spell.spell_type}</Text> 
+                        <Text style={styles.spellText}>{spell.spell_type}</Text>
                     </Item.Meta>
                     <Item.Description>
-                    <Text style={styles.spellText}>  <b>Classes that can use the spell:</b><br /> {spell.classes.join(', ')}</Text> 
-                    <br />
-                    <Text style={styles.spellText}> <b>components:</b> {spell.Component || 'none'}</Text>
-                    <br />
-                    <Text style={styles.spellText}>  <b>duration:</b> {spell.duration}</Text>
+                        <Text style={styles.spellText}>  <b>Classes:</b> {spell.classes.join(', ')}</Text>
                         <br />
-                        <Text style={styles.spellText}> <b>higher levels:</b> {spell.higher_levels}</Text>
+                        <Text style={styles.spellText}> <b>components:</b> {spell.Component || 'none'}</Text>
                         <br />
+                        <Text style={styles.spellText}>  <b>duration:</b> {spell.duration}</Text>
+                        <br />
+                        {spell.higher_levels &&<><Text style={styles.spellText}> <b>higher levels:</b> {spell.higher_levels}</Text>
+                            <br /></>
+                        }
                         <Text style={styles.spellText}> <b>casting time:</b> {spell.casting_time}</Text>
                         <br />
                         <Text style={styles.spellText}> <b>spell range:</b> {spell.spell_range}</Text>
