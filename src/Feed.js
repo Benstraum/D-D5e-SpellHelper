@@ -5,27 +5,35 @@ import { connect } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { navigationRef } from './RootNavigation';
 //components
-import Home from './components/Home/Home'
+import Filter from './components/Filter/Filter'
 import Spells from './components/Spells/Spells.js'
-
-
+import SelectedSpell from './components/SelectedSpell/SelectedSpell'
+const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
-function Feed () {
-        return (
-            <NavigationContainer ref={navigationRef}>
-                <Stack.Navigator initialRouteName={'Home'}>
-                    <Stack.Screen name="Home" 
-                    component={Home}  
-                    options={{ title: 'SpellBook',headerTitleStyle: { textAlign:"center", flex:1 }, }} />
-                    <Stack.Screen name="allSpells" 
-                    component={Spells}  
-                    options={{ title: 'All Spells',headerTitleStyle: {textAlign:"center", flex:1 }, }} />
-                </Stack.Navigator>
-            </NavigationContainer>
-        )
+const Feed = (props) => {
+    return (
+        <NavigationContainer ref={navigationRef}>
+            <Tab.Navigator backBehavior={history} initialRouteName={'allSpells'} tabBarOptions={{ activeTintColor: '#e91e63', }}>
+                <Tab.Screen name="allSpells"
+                    component={Spells}
+                />
+                <Tab.Screen name="Filter"
+                    component={Filter}
+                />
+                 <Tab.Screen name="selectedSpell"
+                    component={SelectedSpell}
+                />
+                
+            </Tab.Navigator>
+        </NavigationContainer>
+    )
 }
-export default connect()(Feed)
+const mapStateToProps = (state) => ({
+    spell: state.selectedSpellReducer
+});
+export default connect(mapStateToProps)(Feed)

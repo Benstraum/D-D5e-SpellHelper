@@ -1,59 +1,52 @@
 import { StatusBar } from 'expo-status-bar';
 import 'react-native-gesture-handler'
-import React, { useEffect,useState } from 'react';
-import { Text, View, ImageBackground, Button, SafeAreaView, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Text, View, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 
+import {  Divider } from 'semantic-ui-react'
+import SpellTabMapItem from '../SpellTabMapItem/SpellTapMapItem'
+
+import * as RootNavigation from '../../RootNavigation.js';
 //compact component
-const Item = ({ item, onPress, style }) => (
-    <TouchableOpacity onPress={onPress} style={[styles.item, style]}>
-      <Text style={styles.title}>{item.spell_name}</Text>
-    </TouchableOpacity>
-  );
-
 const Spells = (props) => {
-    const [selectedId, setSelectedId] = useState(null);
+    const selectSpell =(spell)=> {
+       props.dispatch({type:'SET_SELECTED_SPELL', payload:spell})
+       sendToScreen()
+     }
+     const sendToScreen=()=>{
+        RootNavigation.navigate('selectedSpell')
+     }
+    let spells = props.spells
+    let level = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    console.log(props.spell)
+    return (
+        <ScrollView>
+            {
+                level.map((Lv, index) => (<div style={{}} key={index} className="mappedLevels">
+                    <div style={{ backgroundColor: 'black', width: '100%', padding: '15px', position: 'sticky', top: 0 }}>
+                        <Text style={{ color: 'white', fontSize: '18px', textAlign: 'center', justifyContent: 'top', opacity: 1 }}>Level {Lv}</Text>
+                        <Text style={{ color: 'white', float: 'right', backgroundColor: 'black' }}>Total: {spells.filter(item => item.spell_level === Lv).length}</Text>
+                    </div>
+                    <View style={{ position: 'relative' }}>
+                        {
+                            spells.filter(item => item.spell_level === Lv).map((item, i) => (
+                                <div key={i}>
+                                    <SpellTabMapItem key={i} item={item} index={i} selectSpell={selectSpell} />
+                                    <Divider />
+                                </div>
 
-   const renderItem = ({ item }) => {
-     const backgroundColor = item.spell_id === selectedId ? "#6e3b6e" : "#f9c2ff";
- 
-     return (
-       <Item
-         item={item}
-         onPress={() => setSelectedId(item.spell_id)}
-         style={{ backgroundColor }}
-       />
-     );
-   };
- 
-   return (
-     <SafeAreaView style={styles.container}>
-       <FlatList
-         data={props.spells}
-         renderItem={renderItem}
-         keyExtractor={(item) => item.spell_id}
-         extraData={selectedId}
-       />
-     </SafeAreaView>
-   );
+                            ))
+                        }
+                    </View>
+                </div>
+                ))
+            }
+        </ScrollView>
+    )
 }
-
-
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      marginTop: StatusBar.currentHeight || 0,
-    },
-    item: {
-      padding: 20,
-      marginVertical: 8,
-      marginHorizontal: 16,
-    },
-    title: {
-      fontSize: 32,
-    },
-  });
 const mapStateToProps = (state) => ({
-    spells:state.allSpellReducer
+    spells: state.allSpellReducer,
+    spell:state
 });
 export default connect(mapStateToProps)(Spells);

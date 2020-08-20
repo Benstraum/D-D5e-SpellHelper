@@ -8,7 +8,7 @@ import styles from '../styles.js'
 //imported to be able to navigate/ push to different screens
 import * as RootNavigation from '../../RootNavigation.js';
 
-const Home = (props) => {
+const Filter = (props) => {
    console.log(props.state)
     return(<View style={styles.container}>
 
@@ -21,4 +21,4 @@ const Home = (props) => {
 const mapStateToProps = (state) => ({
     state
 });
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps)(Filter);

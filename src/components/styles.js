@@ -13,6 +13,11 @@ const styles = StyleSheet.create({
     h1:{
         fontSize: 18,
         color: 'black',
+    },
+    spellText:{
+        fontSize:16,
+        color: 'black',
+        padding:'10'
     }
 });
 export default styles;
