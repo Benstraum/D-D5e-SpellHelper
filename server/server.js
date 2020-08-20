@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const bodyParser = require('body-parser');
-
+const spellRouter = require('./routes/spellRouter.js')
 // Body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -16,7 +16,7 @@ app.use((req,res, next)=>{
   next()
 })
 /* Routes */
-// app.use('/api/spells', spellRouter);
+app.use('/api/spells', spellRouter);
 
 // Serve static files
 app.use(express.static('build'));

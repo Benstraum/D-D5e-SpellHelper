@@ -1,13 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useEffect} from 'react';
+import { StyleSheet, Text, View, ImageBackground } from 'react-native';
+import { connect } from 'react-redux';
 
-export default function App() {
+import Feed from './src/Feed.js'
+
+function App(props) {
+  useEffect(() => {
+    props.dispatch({type:'GET_ALL_SPELLS'})
+  },[]);
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ImageBackground source={require('./assets/background.jpg')} style={styles.bgImage}>
+      <Feed />
+    </ImageBackground>
   );
 }
 
@@ -18,4 +23,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  bgImage:{
+    height:'100%',
+    width:'100%',
+    flex:1,
+    zIndex:0,
+    position:'absolute',
+    opacity:0.7,
+    backgroundColor: '#313131',
+},
 });
+
+
+export default connect()(App)
