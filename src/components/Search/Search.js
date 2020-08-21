@@ -20,7 +20,7 @@ const Search = (props) => {
         setSpellName('Search By Spell Name')
     }
     return (
-        <View style={{ backgroundColor: '#21211f', flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 15, alignItems: 'center' }}>
+        <View style={{ backgroundColor: '#21211f', flexDirection: 'row', justifyContent:'space-evenly', paddingVertical: 15, alignItems: 'center' }}>
             <Text onPress={() => props.dispatch({ type: 'RESET_SEARCH' })}
                 style={{ fontSize: 18, color: 'red', marginLeft: 15 }}
             >Reset</Text>

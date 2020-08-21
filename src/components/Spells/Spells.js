@@ -51,13 +51,13 @@ const Spells = (props) => {
 
 
     return (
-        <View style={{ backgroundColor: 'black', flex: 1 }}>
-            <Search spellList={spells} style={{ position: 'absolute' }} />
+        <ScrollView style={{ backgroundColor: 'black', flex: 1 }}>
+            <Search spellList={spells} style={{ position: 'absolute',top:0 }} />
             {props.search.spells.length ?
 
                 level.map((Lv, index) => (
-                    <ScrollView key={index} style={{backgroundColor: 'black', borderColor:'grey'}}>
-                        <View style={{backgroundColor: '#141413', padding: 10, zIndex: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <View key={index} style={{backgroundColor: 'black', borderColor:'grey'}}>
+                        <View style={{top:0,position:'sticky',backgroundColor: '#141413', padding: 10, zIndex: 1, flexDirection: 'row', justifyContent: 'space-between', }}>
                             <Text style={{ color: 'white', fontSize: 18 }}>Level {Lv}</Text>
                             <Text style={{ color: 'white' }}>Total: {props.spells.filter(item => item.spell_level === Lv).length}</Text>
                         </View>
@@ -68,11 +68,11 @@ const Spells = (props) => {
                                 ))
                             }
                         </View>
-                    </ScrollView>
+                    </View>
                 ))
                 :
                 level.map((Lv, index) => (<View key={index}>
-                    <View style={{ backgroundColor: '#141413', width: '100%', padding: 15, zIndex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
+                    <View style={{ top:0,position:'sticky',backgroundColor: '#141413', width: '100%', padding: 15, zIndex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
                         <Text style={{ color: 'white', fontSize: 18, opacity: 1 }}>Level {Lv}</Text>
                         <Text style={{ color: 'white' }}>Total: {props.spells.filter(item => item.spell_level === Lv).length}</Text>
                     </View>
@@ -86,7 +86,7 @@ const Spells = (props) => {
                 </View>
                 ))
             }
-        </View>
+        </ScrollView>
     )
 }
 

@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     width:'100%',
     flex:1,
     backgroundColor: 'black',
-    marginTop:'9%'
+    //marginTop:'9%' //this makes room for statusbar
 },
 });
 
