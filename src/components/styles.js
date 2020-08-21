@@ -6,20 +6,26 @@ const styles = StyleSheet.create({
         backgroundColor:'#21211f'
     },
     text: {
-        fontSize: 12,
         color: 'white'
     },
     h1:{
-        fontSize: 18,
-        color: 'white',
+        color: 'red',
+         fontSize:20,
+         flexDirection:'row',
+         padding:10
     },
     spellText:{
-        fontSize:16,
         color: 'white',
-        padding:'5'
+        flexDirection:'row',
+        padding:10
     },
     bgImage:{
         backgroundColor:'black'
+    },
+    spellView:{
+        flex:1,
+    
+        backgroundColor:'#21211f'
     }
 });
 export default styles;

@@ -7,7 +7,7 @@ import createSagaMiddleware from 'redux-saga';
 import rootReducer from './src/redux/reducers'; // imports ./redux/reducers/index.js
 import rootSaga from './src/redux/sagas'; // imports ./redux/sagas/index.js
 //importting fav styling library
-import 'semantic-ui-css/semantic.min.css'
+
 import App from './App';
 
 const sagaMiddleware = createSagaMiddleware();

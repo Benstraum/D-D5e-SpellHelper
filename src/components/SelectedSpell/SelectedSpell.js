@@ -1,5 +1,5 @@
 import React, { useEffect, useState, Component } from 'react';
-import { Text, View, ImageBackground, Button, SafeAreaView, FlatList, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
+import { Text, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import { Item } from 'semantic-ui-react'
 
@@ -8,35 +8,28 @@ import styles from '../styles'
 const SelectedSpell = (props) => {
     console.log(props.spell)
     let spell = props.spell
-    return (
-        <View style={styles.container}>
-            <Item>
-                <Item.Content>
-                    <Item.Header><Text style={{ color: 'red', fontSize: 20 }}>{spell.spell_name}</Text></Item.Header>
-                    <Item.Meta>
+    
+    return (<ScrollView style={styles.spellView}>
+                        <Text style={styles.h1}><b>Spell Type</b>: {spell.spell_name}</Text>
+                  
                         <Text style={styles.spellText}>{spell.spell_type}</Text>
-                    </Item.Meta>
-                    <Item.Description>
-                        <Text style={styles.spellText}>  <b>Classes:</b> {spell.classes.join(', ')}</Text>
-                        <br />
-                        <Text style={styles.spellText}> <b>components:</b> {spell.Component || 'none'}</Text>
-                        <br />
-                        <Text style={styles.spellText}>  <b>duration:</b> {spell.duration}</Text>
-                        <br />
-                        {spell.higher_levels &&<><Text style={styles.spellText}> <b>higher levels:</b> {spell.higher_levels}</Text>
-                            <br /></>
+
+                        <Text style={styles.spellText}><b>Classes</b>: {spell.classes.join(', ')}</Text>
+                        
+                        <Text style={styles.spellText}><b>Components</b>: {spell.Component || 'none'}</Text>
+                       
+                        <Text style={styles.spellText}><b>Duration</b>: {spell.duration}</Text>
+                       
+                        {!!spell.higher_levels &&<Text style={styles.spellText}><b>Higher Level Casting</b>: {spell.higher_levels}</Text>
+                            
                         }
-                        <Text style={styles.spellText}> <b>casting time:</b> {spell.casting_time}</Text>
-                        <br />
-                        <Text style={styles.spellText}> <b>spell range:</b> {spell.spell_range}</Text>
-                        <br />
-                        <Text style={styles.spellText}> <b>description: </b>{spell.description.replace('<br>', '')}</Text>
-                        <br />
-                    </Item.Description>
-                </Item.Content>
-            </Item>
-        </View>
-    )
+                        <Text style={styles.spellText}><b>Casting Time</b>: {spell.casting_time}</Text>
+                        
+                        <Text style={styles.spellText}><b>Spell Range</b>: {spell.spell_range}</Text>
+                       
+                        <Text style={styles.spellText}><b>Description</b>: {spell.description.replace('<br>', '')}</Text>
+    
+                        </ScrollView>)
 }
 
 

@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 import {  Icon } from 'semantic-ui-react'
-import {Text, TouchableOpacity} from 'react-native'
+import {Text, TouchableOpacity, View} from 'react-native'
 const SpellTabMapItem =(props)=> {
        let item = props.item
        let selectSpell = props.selectSpell
         return (
             <TouchableOpacity onPress={()=>selectSpell(item)}>
-            <div className="spellItem" style={{textAlign:'left',backgroundColor:'#21211f', zIndex:0, padding:12, borderBottom:'2px solid gray'}}>
-                <Icon size='large' name='heart outline' inverted />
-                <Text style={{color:'white', fontWeight:'bold', fontSize:14, paddingHorizontal:10}}>{item.spell_name}</Text> 
-                <Text style={{float:'right',color:'white', fontSize:10}}>{item.spell_type}</Text>
-        </div>
+            <View  style={{backgroundColor:'#21211f', zIndex:1, padding:12,flexDirection:'row',justifyContent:'space-between'}}>
+                <Text style={{color:'white', fontWeight:'bold', paddingHorizontal:10}}>{item.spell_name}</Text> 
+                <Text style={{color:'white'}}>{item.spell_type.includes(props.Lv) ?item.spell_type.slice(9) : item.spell_type}</Text>
+                {/* <Icon name='heart'  /> */}
+        </View>
         </TouchableOpacity>
         )
 

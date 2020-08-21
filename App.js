@@ -1,8 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useEffect} from 'react';
-import { StyleSheet, Text, View, ImageBackground } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
-
+// import 'semantic-ui-css/semantic.min.css'
 import Feed from './src/Feed.js'
 
 function App(props) {

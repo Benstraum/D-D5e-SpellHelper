@@ -16,19 +16,24 @@ const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
 const Feed = (props) => {
+
+    const createSpellStack = () => {
+        return (
+        <Stack.Navigator initialRoutename={'allSpells'} >
+            <Stack.Screen options={{headerShown: false}} name="allSpells" component={Spells} />
+            <Stack.Screen name="selectedSpell" component={SelectedSpell} />
+        </Stack.Navigator>
+        )
+    }
     return (
         <NavigationContainer ref={navigationRef}>
-            <Tab.Navigator backBehavior={history} initialRouteName={'allSpells'} tabBarOptions={{ activeTintColor: '#e91e63', }}>
-                <Tab.Screen name="allSpells"
-                    component={Spells}
+            <Tab.Navigator initialRouteName={'Spells'} swipeEnabled tabStyle={{fontSize:16}} tabBarOptions={{ activeTintColor: 'red', }}>
+                <Tab.Screen name="Spells"
+                    children={createSpellStack}
                 />
                 <Tab.Screen name="Filter"
                     component={Filter}
                 />
-                 <Tab.Screen name="selectedSpell"
-                    component={SelectedSpell}
-                />
-                
             </Tab.Navigator>
         </NavigationContainer>
     )
