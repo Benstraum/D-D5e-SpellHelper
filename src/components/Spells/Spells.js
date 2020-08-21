@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler'
-import React, { useEffect, useState,useRef } from 'react';
-import { Text, View, ScrollView, TextInput, Button, FlatList } from 'react-native';
+import React, { useEffect, useState, useRef } from 'react';
+import { Text, View, ScrollView, SectionList, Button, FlatList } from 'react-native';
 import { connect } from 'react-redux';
 import Search from '../Search/Search'
 import SpellTabMapItem from '../SpellTabMapItem/SpellTapMapItem'
@@ -12,41 +12,47 @@ import * as RootNavigation from '../../RootNavigation.js';
 
 //compact component
 const Spells = (props) => {
+    const [render, setRender]=useState(false)
     useEffect(() => {
     }, [props.spells])
-    
+
     //Skipping first iteration (exactly like componentWillReceiveProps):
     const isFirstRun = useRef(true);
-    useEffect (() => {
+    useEffect(() => {
         if (isFirstRun.current) {
             isFirstRun.current = false;
             return;
         }
         func()
+        setRender(true)
     }, [props.spells]);
+
+
     const selectSpell = (spell) => {
         props.dispatch({ type: 'SET_SELECTED_SPELL', payload: spell })
         sendToScreen()
     }
+
+
     const sendToScreen = () => {
         RootNavigation.navigate('selectedSpell')
     }
+
+
     let spells = props.spells
     let level = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-  
-const func=()=>{
-    console.log(props.spells)
-    let goodArr=[]
-    level.forEach(Lv =>goodArr.push(props.spells.filter(item => item.spell_level === Lv)))
-    console.log(goodArr)
-    return goodArr
-}
+    let spellLevelSortArr = []
+    const func = () => {
+        console.log(props.spells)
+        level.forEach(Lv => spellLevelSortArr.push(props.spells.filter(item => item.spell_level === Lv)))
+        console.log(spellLevelSortArr)
+        return spellLevelSortArr
+    }
 
 
-return (
-       <View   style={{ backgroundColor: 'black', flex:1 }}>
-     <Search spellList={spells} style={{ position: 'absolute'}} />
-     <ScrollView style={{ backgroundColor: 'black', flex:1 }}>
+    return (
+        <View style={{ backgroundColor: 'black', flex: 1 }}>
+            <Search spellList={spells} style={{ position: 'absolute' }} />
             {props.search.spells.length ?
 
                 level.map((Lv, index) => (
@@ -80,7 +86,6 @@ return (
                 </View>
                 ))
             }
-            </ScrollView>
         </View>
     )
 }
