@@ -1,5 +1,5 @@
 import 'react-native-gesture-handler'
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useRef } from 'react';
 import { Text, View, ScrollView, TextInput, Button, FlatList } from 'react-native';
 import { connect } from 'react-redux';
 import Search from '../Search/Search'
@@ -12,6 +12,18 @@ import * as RootNavigation from '../../RootNavigation.js';
 
 //compact component
 const Spells = (props) => {
+    useEffect(() => {
+    }, [props.spells])
+    
+    //Skipping first iteration (exactly like componentWillReceiveProps):
+    const isFirstRun = useRef(true);
+    useEffect (() => {
+        if (isFirstRun.current) {
+            isFirstRun.current = false;
+            return;
+        }
+        func()
+    }, [props.spells]);
     const selectSpell = (spell) => {
         props.dispatch({ type: 'SET_SELECTED_SPELL', payload: spell })
         sendToScreen()
@@ -19,9 +31,18 @@ const Spells = (props) => {
     const sendToScreen = () => {
         RootNavigation.navigate('selectedSpell')
     }
-  
     let spells = props.spells
     let level = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  
+const func=()=>{
+    console.log(props.spells)
+    let goodArr=[]
+    level.forEach(Lv =>goodArr.push(props.spells.filter(item => item.spell_level === Lv)))
+    console.log(goodArr)
+    return goodArr
+}
+
+
 return (
        <View   style={{ backgroundColor: 'black', flex:1 }}>
      <Search spellList={spells} style={{ position: 'absolute'}} />
