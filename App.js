@@ -11,6 +11,7 @@ function App(props) {
   },[]);
   return (
     <View style={styles.bgImage}>
+      <StatusBar/>
       <Feed />
     </View>
   );
@@ -26,7 +27,8 @@ const styles = StyleSheet.create({
     height:'100%',
     width:'100%',
     flex:1,
-    backgroundColor: '#21211f',
+    backgroundColor: 'black',
+    marginTop:'9%'
 },
 });
 

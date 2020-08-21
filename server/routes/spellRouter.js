@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
     GROUP BY dnd5_spells.spell_id
     ORDER BY spell_level ASC;`
     pool.query(queryText)
-        .then(result => res.send(result.rows))
+        .then(result => res.json(result.rows))
         .catch(error => {
             console.log('error in character get', error)
             res.sendStatus(500)

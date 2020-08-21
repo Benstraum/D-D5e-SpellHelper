@@ -23,15 +23,10 @@ function* getSpells() {
         //   }).then(response=>response.json())
         //   .then(data=>responsePayload=data);
         
-        
-
-          
-    console.log(responsePayload)
-
-
         yield put({ type: 'SET_ALL_SPELLS' , payload: responsePayload});
-    } catch (error) {
-        console.log('List get request failed', error);
+    } catch (responsePayload) {
+        yield put({ type: 'SET_ALL_SPELLS' , payload: responsePayload});
+        console.log('allspellsaga failed', error);
     }
 }
 

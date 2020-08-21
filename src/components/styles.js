@@ -23,9 +23,10 @@ const styles = StyleSheet.create({
         backgroundColor:'black'
     },
     spellView:{
-        flex:1,
-    
-        backgroundColor:'#21211f'
+        borderRadius:14,
+        backgroundColor:'#21211f',
+        marginTop:30,
+        flex:.75
     }
 });
 export default styles;

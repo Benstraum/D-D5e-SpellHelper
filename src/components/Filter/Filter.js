@@ -9,16 +9,15 @@ import styles from '../styles.js'
 import * as RootNavigation from '../../RootNavigation.js';
 
 const Filter = (props) => {
-   console.log(props.state)
-    return(<View style={styles.container}>
-
-        
-      <Button title="All Spells" onPress={()=>RootNavigation.navigate('allSpells')}/>
-      <Button title="Search for Spell"/>
-        
+  console.log(props.state)
+  return (
+    <View style={{backgroundColor:'black', flex:1}}>
+      <Button title="All Spells" onPress={() => RootNavigation.navigate('allSpells')} />
+      <Button title="Search for Spell" />
     </View>
-)};
+  )
+};
 const mapStateToProps = (state) => ({
-    state
+  state
 });
 export default connect(mapStateToProps)(Filter);
