@@ -41,7 +41,7 @@ const Feed = (props) => {
             <Tab.Navigator initialRouteName={'Spells'}
              swipeEnabled 
              tabBarOptions={{ 
-                 activeTintColor: 'red', 
+                 activeTintColor: '#FF3838', 
                  inactiveTintColor: 'gray',
              inactiveBackgroundColor:'#21211f', 
              activeBackgroundColor:'#21211f', 

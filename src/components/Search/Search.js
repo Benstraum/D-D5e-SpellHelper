@@ -22,9 +22,10 @@ const Search = (props) => {
     return (
         <View style={{ backgroundColor: '#21211f', flexDirection: 'row', justifyContent:'space-evenly', paddingVertical: 15, alignItems: 'center' }}>
             <Text onPress={() => props.dispatch({ type: 'RESET_SEARCH' })}
-                style={{ fontSize: 18, color: 'red', marginLeft: 15 }}
+                style={{ fontSize: 18,fontWeight:'bold' ,color: '#FF3838', marginLeft: 15 }}
             >Reset</Text>
             <TextInput
+            accessibilityLabel='Searchbar'
                 style={{ backgroundColor: 'white', borderRadius: 10, padding: 10 }}
                 type='text'
                 placeholder="Search By Spell Name"
@@ -32,7 +33,7 @@ const Search = (props) => {
                 onChangeText={spellName => setSpellName(spellName)}
             />
             <Text onPress={() => filter()}
-                style={{ fontSize: 18, color: 'red', marginRight: 15 }}
+                style={{ fontSize: 18,fontWeight:'bold' , color: '#FF3838', marginRight: 15 }}
             >Search</Text>
         </View>
     )
