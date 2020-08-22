@@ -38,13 +38,14 @@ const Spells = (props) => {
         RootNavigation.navigate('selectedSpell')
     }
 
-
+    
     let spells = props.spells
+    let search = props.search.spells
     let level = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
     let spellLevelSortArr = []
     const func = () => {
         console.log(props.spells)
-        level.forEach(Lv => spellLevelSortArr.push(props.spells.filter(item => item.spell_level === Lv)))
+        level.forEach(Lv => spellLevelSortArr.push(spells.filter(item => item.spell_level === Lv)))
         console.log(spellLevelSortArr)
         return spellLevelSortArr
     }
@@ -53,18 +54,20 @@ const Spells = (props) => {
     return (
         <ScrollView style={{ backgroundColor: 'black', flex: 1 }}>
             <Search spellList={spells} style={{ position: 'absolute',top:0 }} />
-            {props.search.spells.length ?
+            {search.length ?
 
+            
                 level.map((Lv, index) => (
+                    search.filter(item => item.spell_level === Lv).length &&
                     <View key={index} style={{backgroundColor: 'black', borderColor:'grey'}}>
                         <View style={{top:0,position:'sticky',backgroundColor: '#141413', padding: 10, zIndex: 1, flexDirection: 'row', justifyContent: 'space-between', }}>
                             <Text style={{ color: 'white', fontSize: 18 }}>Level {Lv}</Text>
-                            <Text style={{ color: 'white' }}>Total: {props.spells.filter(item => item.spell_level === Lv).length}</Text>
+                            <Text style={{ color: 'white' }}>Total: {spells.filter(item => item.spell_level === Lv).length}</Text>
                         </View>
                         <View>
                             {
-                                props.search.spells.filter(item => item.spell_level === Lv).map((item, i) => (
-                                    <SpellTabMapItem key={i} item={item} index={i} selectSpell={selectSpell} style={{padding:0, margin:0}} />
+                                search.filter(item => item.spell_level === Lv).map((item, i) => (
+                                    <SpellTabMapItem key={i} item={item} index={i} Lv={Lv} selectSpell={selectSpell} style={{padding:0, margin:0}} />
                                 ))
                             }
                         </View>
@@ -74,11 +77,11 @@ const Spells = (props) => {
                 level.map((Lv, index) => (<View key={index}>
                     <View style={{ top:0,position:'sticky',backgroundColor: '#141413', width: '100%', padding: 15, zIndex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
                         <Text style={{ color: 'white', fontSize: 18, opacity: 1 }}>Level {Lv}</Text>
-                        <Text style={{ color: 'white' }}>Total: {props.spells.filter(item => item.spell_level === Lv).length}</Text>
+                        <Text style={{ color: 'white' }}>Total: {spells.filter(item => item.spell_level === Lv).length}</Text>
                     </View>
                     <View  style={{ position: 'relative' }}>
                         {
-                            props.spells.filter(item => item.spell_level === Lv).map((item, i) => (
+                            spells.filter(item => item.spell_level === Lv).map((item, i) => (
                                 <SpellTabMapItem key={i} item={item} index={i} selectSpell={selectSpell} Lv={Lv} />
                             ))
                         }

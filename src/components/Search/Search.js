@@ -21,7 +21,7 @@ const Search = (props) => {
     }
     return (
         <View style={{ backgroundColor: '#21211f', flexDirection: 'row', justifyContent:'space-evenly', paddingVertical: 15, alignItems: 'center' }}>
-            <Text onPress={() => props.dispatch({ type: 'RESET_SEARCH' })}
+            <Text onPress={() => reset()}
                 style={{ fontSize: 18,fontWeight:'bold' ,color: '#FF3838', marginLeft: 15 }}
             >Reset</Text>
             <TextInput

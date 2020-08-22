@@ -4,12 +4,14 @@ import React, { useEffect } from 'react';
 import { Text, View, ImageBackground, Button } from 'react-native';
 import { connect } from 'react-redux';
 
-import styles from '../styles.js'
 //imported to be able to navigate/ push to different screens
 import * as RootNavigation from '../../RootNavigation.js';
+import MultiSelect from 'react-native-multiple-select';
+
 
 const Filter = (props) => {
-  console.log(props.state)
+
+
   return (
     <View style={{backgroundColor:'black', flex:1}}>
       <Button title="All Spells" onPress={() => RootNavigation.navigate('allSpells')} />
