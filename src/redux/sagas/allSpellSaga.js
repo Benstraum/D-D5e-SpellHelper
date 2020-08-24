@@ -24,8 +24,8 @@ function* getSpells() {
         //   .then(data=>responsePayload=data);
         
         yield put({ type: 'SET_ALL_SPELLS' , payload: responsePayload});
-    } catch (responsePayload) {
-        yield put({ type: 'SET_ALL_SPELLS' , payload: responsePayload});
+    } catch (error) {
+
         console.log('allspellsaga failed', error);
     }
 }

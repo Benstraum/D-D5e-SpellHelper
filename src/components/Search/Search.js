@@ -16,8 +16,8 @@ const Search = (props) => {
             console.log('theres nothin cap')
     }
     const reset = () => {
+        setSpellName('')
         props.dispatch({ type: 'RESET_SEARCH' })
-        setSpellName('Search By Spell Name')
     }
     return (
         <View style={{ backgroundColor: '#21211f', flexDirection: 'row', justifyContent:'space-evenly', paddingVertical: 15, alignItems: 'center' }}>
@@ -30,6 +30,7 @@ const Search = (props) => {
                 type='text'
                 placeholder="Search By Spell Name"
                 placeholderTextColor="black"
+                value={spellName}
                 onChangeText={spellName => setSpellName(spellName)}
             />
             <Text onPress={() => filter()}

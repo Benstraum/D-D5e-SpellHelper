@@ -14,8 +14,7 @@ const Filter = (props) => {
 
   return (
     <View style={{backgroundColor:'black', flex:1}}>
-      <Button title="All Spells" onPress={() => RootNavigation.navigate('allSpells')} />
-      <Button title="Search for Spell" />
+   <Text>will make filters here soon</Text>
     </View>
   )
 };
