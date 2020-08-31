@@ -30,7 +30,7 @@ const Feed = (props) => {
                 headerStyle:{backgroundColor:'#21211f'},
                 headerTintColor:'white'
             }} 
-            name="selectedSpell" 
+            name="Spell Details" 
             component={SelectedSpell} 
             />
         </Stack.Navigator>
