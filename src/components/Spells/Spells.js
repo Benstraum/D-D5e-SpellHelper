@@ -63,37 +63,58 @@ const Spells = (props) => {
             
                 level.map((Lv, index) => (
                     !!searchSpells.filter(item => item.spell_level === Lv).length &&
-                    <View key={index} style={{backgroundColor: 'black', borderColor:'grey'}}>
-                        <View style={{backgroundColor: '#141413', padding: 10, zIndex: 1, flexDirection: 'row', justifyContent: 'space-between', }}>
-                            <Text style={{ color: 'white', fontSize: 18 }}>Level {Lv}</Text>
-                            <Text style={{ color: 'white' }}>Total: {searchSpells.filter(item => item.spell_level === Lv).length}</Text>
-                        </View>
-                        <View>
-                            {
-                                searchSpells.filter(item => item.spell_level === Lv).map((item, i) => (
-                                    <SpellTabMapItem key={i} item={item} index={i} Lv={Lv} selectSpell={selectSpell} style={{padding:0, margin:0}} />
-                                ))
-                            }
-                        </View>
-                    </View>
+                    <SpellPageStructure index={index} Lv={Lv} propSpells={searchSpells} selectSpell={selectSpell}/>
+                    // <View key={index} style={{backgroundColor: 'black', borderColor:'grey'}}>
+                    //     <View style={{backgroundColor: '#141413', padding: 10, zIndex: 1, flexDirection: 'row', justifyContent: 'space-between', }}>
+                    //         <Text style={{ color: 'white', fontSize: 18 }}>Level {Lv}</Text>
+                    //         <Text style={{ color: 'white' }}>Total: {searchSpells.filter(item => item.spell_level === Lv).length}</Text>
+                    //     </View>
+                    //     <View>
+                    //         {
+                    //             searchSpells.filter(item => item.spell_level === Lv).map((item, i) => (
+                    //                 <SpellTabMapItem key={i} item={item} index={i} Lv={Lv} selectSpell={selectSpell} style={{padding:0, margin:0}} />
+                    //             ))
+                    //         }
+                    //     </View>
+                    // </View>
                 ))
                 :
-                level.map((Lv, index) => (<View key={index}>
-                    <View style={{backgroundColor: '#141413', width: '100%', padding: 15, zIndex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
-                        <Text style={{ color: 'white', fontSize: 18, opacity: 1 }}>Level {Lv}</Text>
-                        <Text style={{ color: 'white' }}>Total: {allSpells.filter(item => item.spell_level === Lv).length}</Text>
-                    </View>
-                    <View  style={{ position: 'relative' }}>
-                        {
-                            allSpells.filter(item => item.spell_level === Lv).map((item, i) => (
-                                <SpellTabMapItem key={i} item={item} index={i} selectSpell={selectSpell} Lv={Lv} />
-                            ))
-                        }
-                    </View>
-                </View>
+                level.map((Lv, index) => (
+                    <SpellPageStructure index={index} Lv={Lv} propSpells={allSpells} selectSpell={selectSpell}/>
+                // <View key={index}>
+                //     <View style={{backgroundColor: '#141413', width: '100%', padding: 15, zIndex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
+                //         <Text style={{ color: 'white', fontSize: 18, opacity: 1 }}>Level {Lv}</Text>
+                //         <Text style={{ color: 'white' }}>Total: {allSpells.filter(item => item.spell_level === Lv).length}</Text>
+                //     </View>
+                //     <View  style={{ position: 'relative' }}>
+                //         {
+                //             allSpells.filter(item => item.spell_level === Lv).map((item, i) => (
+                //                 <SpellTabMapItem key={i} item={item} index={i} selectSpell={selectSpell} Lv={Lv} />
+                //             ))
+                //         }
+                //     </View>
+                // </View>
                 ))
             }
         </ScrollView>
+    )
+}
+
+const SpellPageStructure =(props)=>{
+    return (
+        <View key={props.index} style={{backgroundColor: 'black', borderColor:'grey'}}>
+        <View style={{backgroundColor: '#141413', padding: 10, zIndex: 1, flexDirection: 'row', justifyContent: 'space-between', }}>
+            <Text style={{ color: 'white', fontSize: 18 }}>Level {props.Lv}</Text>
+            <Text style={{ color: 'white' }}>Total: {props.propSpells.filter(item => item.spell_level === props.Lv).length}</Text>
+        </View>
+        <View>
+            {
+                props.propSpells.filter(item => item.spell_level === props.Lv).map((item, i) => (
+                    <SpellTabMapItem key={i} item={item} index={i} Lv={props.Lv} selectSpell={props.selectSpell} style={{padding:0, margin:0}} />
+                ))
+            }
+        </View>
+    </View>
     )
 }
 
