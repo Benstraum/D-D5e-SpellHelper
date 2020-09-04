@@ -17,8 +17,9 @@ const ModularSwitch = (props) => {
   }
 
   return (
+    <View style={{backgroundColor: 'black', borderColor:'grey', padding:4}}>
     <View style={styles.filterBackground}>
-      <Text style={styles.spellNameHeaders}>
+      <Text style={{ color: 'white', fontSize: 18, opacity: 1 }}>
         {props.title}
       </Text>
       <Switch
@@ -29,6 +30,7 @@ const ModularSwitch = (props) => {
         value={isEnabled}
       />
     </View>
+    </View>
   );
 }
 
@@ -36,8 +38,8 @@ const ModularSwitch = (props) => {
 const Filter = (props) => {
 
   return (
-    <ScrollView style={{ backgroundColor: 'black', flex: 1 }}>
-      <Text style={{ color: 'white', fontSize: 22, opacity: 1, width: '100%', padding: 15, zIndex: 1, flexDirection: 'row', textAlign: 'center' }}
+    <ScrollView style={{ backgroundColor: 'black', flex: 1, padding:4 }}>
+      <Text style={styles.filterSubjectDivider}
       >Class</Text>
         <ModularSwitch filterQuery='Bard' title="Bard" />
         <ModularSwitch filterQuery='Cleric' title="Cleric" />
@@ -47,7 +49,7 @@ const Filter = (props) => {
         <ModularSwitch filterQuery='Sorcerer' title="Sorcerer" />
         <ModularSwitch filterQuery='Warlock' title="Warlock" />
         <ModularSwitch filterQuery='Wizard' title="Wizard" />
-      <Text style={{ color: 'white', fontSize: 22, opacity: 1, width: '100%', padding: 15, zIndex: 1, flexDirection: 'row', textAlign: 'center' }}
+      <Text style={styles.filterSubjectDivider}
       >School of Magic</Text>
         <ModularSwitch filterQuery='Abjuration' title="Abjuration" />
         <ModularSwitch filterQuery='Conjuration' title="Conjuration" />
@@ -57,7 +59,7 @@ const Filter = (props) => {
         <ModularSwitch filterQuery='Illusion' title="Illusion" />
         <ModularSwitch filterQuery='Necromancy' title="Necromancy" />
         <ModularSwitch filterQuery='Transmutation' title="Transmutation" />
-      <Text style={{ color: 'white', fontSize: 22, opacity: 1, width: '100%', padding: 15, zIndex: 1, flexDirection: 'row', textAlign: 'center' }}
+      <Text style={styles.filterSubjectDivider}
       >Range</Text>
         <ModularSwitch filterQuery='self' title="Self" />
         <ModularSwitch filterQuery='touch' title="Touch" />
@@ -68,13 +70,13 @@ const Filter = (props) => {
         <ModularSwitch filterQuery='60' title="60 ft" />
         <ModularSwitch filterQuery='90' title="90 ft" />
         <ModularSwitch filterQuery='120' title="120 ft" />
-      <Text style={{ color: 'white', fontSize: 22, opacity: 1, width: '100%', padding: 15, zIndex: 1, flexDirection: 'row', textAlign: 'center' }}
+      <Text style={styles.filterSubjectDivider}
       >Components Needed</Text>
         <ModularSwitch filterQuery='V' title="Verbal" />
         <ModularSwitch filterQuery='S' title="Somatic" />
         <ModularSwitch filterQuery='M' title="Material" />
         <ModularSwitch filterQuery='gp' title="Costs Money" />
-      <Text style={{ color: 'white', fontSize: 22, opacity: 1, width: '100%', padding: 15, zIndex: 1, flexDirection: 'row', textAlign: 'center' }}
+      <Text style={styles.filterSubjectDivider}
       >Spell Duration</Text>
         <ModularSwitch filterQuery='Instantaneous' title="Instantaneous" />
         <ModularSwitch filterQuery='Concentration' title="Concentration" />
@@ -82,7 +84,7 @@ const Filter = (props) => {
         <ModularSwitch filterQuery='10' title="10 Minutes" />
         <ModularSwitch filterQuery='hour' title="Hours" />
         <ModularSwitch filterQuery='day' title="Days" />
-        <Text style={{ color: 'white', fontSize: 22, opacity: 1, width: '100%', padding: 15, zIndex: 1, flexDirection: 'row', textAlign: 'center' }}
+        <Text style={styles.filterSubjectDivider}
       > Casting Time</Text>
          <ModularSwitch filterQuery='reaction' title="Reaction" />
         <ModularSwitch filterQuery='bonus action' title="Bonus Action" />
@@ -90,10 +92,10 @@ const Filter = (props) => {
         <ModularSwitch filterQuery='1 minute' title="1 Minute" />
         <ModularSwitch filterQuery='10 minutes' title="10 Minute" />
         <ModularSwitch filterQuery='hour' title="Hours" />
-        <Text style={{ color: 'white', fontSize: 22, opacity: 1, width: '100%', padding: 15, zIndex: 1, flexDirection: 'row', textAlign: 'center' }}
+        <Text style={styles.filterSubjectDivider}
       >Ability to Upcast</Text>
         <ModularSwitch filterQuery={true} title="Upcasting" />
-      <Text style={{ color: 'white', fontSize: 22, opacity: 1, width: '100%', padding: 15, zIndex: 1, flexDirection: 'row', textAlign: 'center' }}
+      <Text style={styles.filterSubjectDivider}
       >Damage Type</Text>
         <ModularSwitch filterQuery='acid damage' title="Acid" />
         <ModularSwitch filterQuery='bludgeoning damage' title="Bludgeoning" />

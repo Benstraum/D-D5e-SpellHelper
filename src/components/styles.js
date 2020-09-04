@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#21211f',
         zIndex: 1,
         borderRadius: 14,
-        padding: 20,
+        padding: 15,
         flexDirection: 'row',
         justifyContent: 'space-between'
     },
@@ -54,12 +54,23 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10
     },
     filterBackground: {
-        backgroundColor: '#141413',
+        backgroundColor: '#21211f',
+        width: '100%',
+        padding: 15,
+        borderRadius:12,
+        zIndex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+    filterSubjectDivider: {
+        color: 'white',
+        fontSize: 22,
+        opacity: 1,
         width: '100%',
         padding: 15,
         zIndex: 1,
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        textAlign: 'center'
     }
 
 });
