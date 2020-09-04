@@ -29,20 +29,13 @@ const Spells = (props) => {
         setSearch(props.search)
         setRender(true)
     }, [props.spells]);
-
-
     const selectSpell = (spell) => {
         props.dispatch({ type: 'SET_SELECTED_SPELL', payload: spell })
         sendToScreen()
     }
-
-
     const sendToScreen = () => {
         RootNavigation.navigate('Spell Details')
     }
-
-    
-
     let level = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
    let searchSpells = props.search["spells"]
     // let spellLevelSortArr = []

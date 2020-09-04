@@ -1,8 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import { Text, View, Button, Switch, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
-
+import styles from '../styles'
 //imported to be able to navigate/ push to different screens
 import * as RootNavigation from '../../RootNavigation.js';
 
@@ -17,8 +17,8 @@ const ModularSwitch = (props) => {
   }
 
   return (
-    <View style={{ backgroundColor: '#141413', width: '100%', padding: 15, zIndex: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
-      <Text style={{ color: 'white', fontSize: 18, opacity: 1 }}>
+    <View style={styles.filterBackground}>
+      <Text style={styles.spellNameHeaders}>
         {props.title}
       </Text>
       <Switch
