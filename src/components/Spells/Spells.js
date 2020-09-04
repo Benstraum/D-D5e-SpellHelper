@@ -1,9 +1,9 @@
 import 'react-native-gesture-handler'
 import React, { useEffect, useState, useRef } from 'react';
-import { Text, View, ScrollView, SectionList, Button, FlatList } from 'react-native';
+import { ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import Search from '../Search/Search'
-import SpellTabMapItem from '../SpellTabMapItem/SpellTapMapItem'
+import SpellPageStructure from '../SpellPageStructure/SpellPageStructure'
 
 import * as RootNavigation from '../../RootNavigation.js';
 
@@ -44,8 +44,7 @@ const Spells = (props) => {
     
 
     let level = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-   let searchSpells = props.search["spells"].length
-    console.log(searchSpells)
+   let searchSpells = props.search["spells"]
     // let spellLevelSortArr = []
     // const func = () => {
     //     console.log(props.spells)
@@ -58,63 +57,17 @@ const Spells = (props) => {
     return (
         <ScrollView style={{ backgroundColor: 'black', flex: 1 }}>
             <Search spellList={allSpells} style={{ position: 'fixed',top:0 }} />
-            {!!searchSpells ?
-
-            
+            {!!searchSpells.length ?
                 level.map((Lv, index) => (
                     !!searchSpells.filter(item => item.spell_level === Lv).length &&
                     <SpellPageStructure index={index} Lv={Lv} propSpells={searchSpells} selectSpell={selectSpell}/>
-                    // <View key={index} style={{backgroundColor: 'black', borderColor:'grey'}}>
-                    //     <View style={{backgroundColor: '#141413', padding: 10, zIndex: 1, flexDirection: 'row', justifyContent: 'space-between', }}>
-                    //         <Text style={{ color: 'white', fontSize: 18 }}>Level {Lv}</Text>
-                    //         <Text style={{ color: 'white' }}>Total: {searchSpells.filter(item => item.spell_level === Lv).length}</Text>
-                    //     </View>
-                    //     <View>
-                    //         {
-                    //             searchSpells.filter(item => item.spell_level === Lv).map((item, i) => (
-                    //                 <SpellTabMapItem key={i} item={item} index={i} Lv={Lv} selectSpell={selectSpell} style={{padding:0, margin:0}} />
-                    //             ))
-                    //         }
-                    //     </View>
-                    // </View>
                 ))
                 :
                 level.map((Lv, index) => (
                     <SpellPageStructure index={index} Lv={Lv} propSpells={allSpells} selectSpell={selectSpell}/>
-                // <View key={index}>
-                //     <View style={{backgroundColor: '#141413', width: '100%', padding: 15, zIndex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
-                //         <Text style={{ color: 'white', fontSize: 18, opacity: 1 }}>Level {Lv}</Text>
-                //         <Text style={{ color: 'white' }}>Total: {allSpells.filter(item => item.spell_level === Lv).length}</Text>
-                //     </View>
-                //     <View  style={{ position: 'relative' }}>
-                //         {
-                //             allSpells.filter(item => item.spell_level === Lv).map((item, i) => (
-                //                 <SpellTabMapItem key={i} item={item} index={i} selectSpell={selectSpell} Lv={Lv} />
-                //             ))
-                //         }
-                //     </View>
-                // </View>
                 ))
             }
         </ScrollView>
-    )
-}
-
-const SpellPageStructure =(props)=>{
-    return (
-        <View key={props.index} style={{backgroundColor: 'black', borderColor:'grey'}}>
-        <View style={{backgroundColor: '#141413', padding: 10, zIndex: 1, flexDirection: 'row', justifyContent: 'space-between', }}>
-            <Text style={{ color: 'white', fontSize: 18 }}>Level {props.Lv}</Text>
-            <Text style={{ color: 'white' }}>Total: {props.propSpells.filter(item => item.spell_level === props.Lv).length}</Text>
-        </View>
-        <View>
-            {
-                props.propSpells.filter(item => item.spell_level === props.Lv).map((item, i) => (
-                    <SpellTabMapItem key={i} item={item} index={i} Lv={props.Lv} selectSpell={props.selectSpell} style={{padding:0, margin:0}} />
-                ))
-            }
-        </View>
-    </View>
     )
 }
 

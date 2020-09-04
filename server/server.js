@@ -23,7 +23,7 @@ app.use(express.static('build'));
 
 // App Set //
 //set to run at expo server location
-const hostname = '127.0.0.1'//'192.168.0.242'
+const hostname = '127.0.0.1'
 const PORT = process.env.PORT || 5000;
 
 
