@@ -4,7 +4,6 @@ import { StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 // import 'semantic-ui-css/semantic.min.css'
 import Feed from './src/Feed.js'
-import axios from 'axios'
 function App(props) {
   useEffect(() => {
    // props.dispatch({type:'GET_ALL_SPELLS'})
@@ -14,7 +13,7 @@ function App(props) {
 
   async function getData() {
   try{
-    await fetch('http://192.168.0.242:5000/api/spells', {
+    await fetch('http://127.0.0.1:5000/api/spells', {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     }).then(response=>response.json())
