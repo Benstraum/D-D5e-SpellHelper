@@ -12,6 +12,7 @@ import {Icon} from 'semantic-ui-react'
 import Filter from './components/Filter/Filter'
 import Spells from './components/Spells/Spells.js'
 import SelectedSpell from './components/SelectedSpell/SelectedSpell'
+import FilteredSpellsPage from './components/FilteredSpellsPage/FilteredSpellsPage'
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -43,14 +44,14 @@ const Feed = (props) => {
             name="Filter" 
             component={Filter} 
             />
-            {/* <Stack.Screen 
+            <Stack.Screen 
             options={{
                 headerStyle:{backgroundColor:'#21211f'},
                 headerTintColor:'white'
             }} 
             name="Filtered Spell List" 
-            component={SelectedSpell} 
-            /> */}
+            component={FilteredSpellsPage} 
+            />
         </Stack.Navigator>
         )
     }
