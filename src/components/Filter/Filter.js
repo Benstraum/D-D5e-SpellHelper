@@ -1,42 +1,15 @@
-import { StatusBar } from 'expo-status-bar';
 import React, {  useState } from 'react';
-import { Text, View, Button, Switch, ScrollView } from 'react-native';
+import { Text, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import styles from '../styles'
+
+import ModularSwitch from '../ModularSwitch/ModularSwitch'
 //imported to be able to navigate/ push to different screens
 import * as RootNavigation from '../../RootNavigation.js';
 
-
-const ModularSwitch = (props) => {
-  const [isEnabled, setIsEnabled] = useState(false);
-  const toggleSwitch = (query) => {
-
-    setIsEnabled(previousState => !previousState)
-    isEnabled === false && console.log(query)
-
-  }
-
-  return (
-    <View style={{backgroundColor: 'black', borderColor:'grey', padding:4}}>
-    <View style={styles.filterBackground}>
-      <Text style={{ color: 'white', fontSize: 18, opacity: 1 }}>
-        {props.title}
-      </Text>
-      <Switch
-        trackColor={{ false: "#767577", true: "maroon" }}
-        thumbColor={isEnabled ? "#FF3838" : "#f4f3f4"}
-        ios_backgroundColor="#3e3e3e"
-        onValueChange={() => toggleSwitch(props.filterQuery)}
-        value={isEnabled}
-      />
-    </View>
-    </View>
-  );
-}
-
-
 const Filter = (props) => {
-
+  const [filterValues, setFilterValues] = useState([])
+  console.log(props.filterQueries)
   return (
     <ScrollView style={{ backgroundColor: 'black', flex: 1, padding:4 }}>
       <Text style={styles.filterSubjectDivider}
@@ -114,6 +87,6 @@ const Filter = (props) => {
   )
 };
 const mapStateToProps = (state) => ({
-  state
+  filterQueries: state.filterQueryReducer
 });
 export default connect(mapStateToProps)(Filter);

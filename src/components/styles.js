@@ -46,9 +46,10 @@ const styles = StyleSheet.create({
     },
     spellNameHeaders: {
         color: 'white',
-        fontSize: 18
+        fontSize: 22
     },
     spellMapItemName: {
+        fontSize:18,
         color: 'white',
         fontWeight: 'bold',
         paddingHorizontal: 10

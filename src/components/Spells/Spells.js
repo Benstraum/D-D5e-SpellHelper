@@ -53,7 +53,7 @@ const Spells = (props) => {
             {!!searchSpells.length ?
                 level.map((Lv, index) => (
                     !!searchSpells.filter(item => item.spell_level === Lv).length &&
-                    <SpellPageStructure index={index} Lv={Lv} propSpells={searchSpells} selectSpell={selectSpell}/>
+                    <SpellPageStructure key={index} Lv={Lv} propSpells={searchSpells} selectSpell={selectSpell}/>
                 ))
                 :
                 level.map((Lv, index) => (

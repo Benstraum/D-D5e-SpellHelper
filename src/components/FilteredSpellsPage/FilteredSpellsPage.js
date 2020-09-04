@@ -9,4 +9,4 @@ const FilteredSpellsPage = (props) =>{
 </View>
     )
 }
-export default FilteredSpellsPage
+export default connect()(FilteredSpellsPage)

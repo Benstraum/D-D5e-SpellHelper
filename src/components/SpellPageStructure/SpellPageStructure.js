@@ -5,7 +5,7 @@ import styles from '../styles'
 
 const SpellPageStructure =(props)=>{
     return (
-        <View key={props.index} style={{backgroundColor: 'black', borderColor:'grey'}}>
+        <View key={props.key} style={{backgroundColor: 'black', borderColor:'grey'}}>
         <View style={styles.spellLevelHeader}>
             <Text style={styles.spellNameHeaders}>Level {props.Lv}</Text>
             <Text style={styles.spellNameHeaders}>Total: {props.propSpells.filter(item => item.spell_level === props.Lv).length}</Text>
