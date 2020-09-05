@@ -18,22 +18,36 @@ const Filter = (props) => {
     // run the tests agains every element in the array
     let newSpellList = []
     for (let item of list) {
+      let truthyDetector = 0
       let iterableObject = Object.values(item)
-      queries.some(el => iterableObject.flat(1).includes(el)) && newSpellList.push(item)
+
+      iterableObject.map(thingy => {
+        typeof (thingy) === "string" && queries.some(el => thingy.includes(el))  && newSpellList.push(item)
+      })
     }
     console.log(newSpellList)
   }
   const exclusiveFilter = () => {
     // test cases
     let list = props.allSpells
+    let betterArr =Object.values(list)
     // does the test strings contains this terms?
     let queries = props.filterQueries
     // run the tests agains every element in the array
     let newSpellList = []
-    for (let item of list) {
-      let iterableObject = Object.values(item)
-      queries.every(el => iterableObject.flat(1).includes(el)) && newSpellList.push(item)
-    }
+   
+    for (let item of betterArr) {
+      let truthyDetector = 0
+     queries.forEach(el =>{
+       el.includes('damage') && item.description.includes(el) && truthyDetector++
+       el.length<=2 && item.components.includes(el) && truthyDetector++
+       item.duration.includes(el) && truthyDetector++
+       item.casting_time.includes(el) && truthyDetector++
+    })  
+
+    queries.length === truthyDetector && newSpellList.push(item)
+    truthyDetector = 0
+  }
     console.log(newSpellList)
   }
   return (
@@ -65,15 +79,15 @@ const Filter = (props) => {
         <ModularSwitch filterQuery='transmutation' title="Transmutation" />
         <Text style={styles.filterSubjectDivider}
         >Range</Text>
-        <ModularSwitch filterQuery='self' title="Self" />
-        <ModularSwitch filterQuery='touch' title="Touch" />
-        <ModularSwitch filterQuery='5' title="5 ft" />
-        <ModularSwitch filterQuery='10' title="10 ft" />
-        <ModularSwitch filterQuery='15' title="15 ft" />
-        <ModularSwitch filterQuery='30' title="30 ft" />
-        <ModularSwitch filterQuery='60' title="60 ft" />
-        <ModularSwitch filterQuery='90' title="90 ft" />
-        <ModularSwitch filterQuery='120' title="120 ft" />
+        <ModularSwitch filterQuery='Self' title="Self" />
+        <ModularSwitch filterQuery='Touch' title="Touch" />
+        <ModularSwitch filterQuery='5 ft' title="5 ft" />
+        <ModularSwitch filterQuery='10 ft' title="10 ft" />
+        <ModularSwitch filterQuery='15 ft' title="15 ft" />
+        <ModularSwitch filterQuery='30 ft' title="30 ft" />
+        <ModularSwitch filterQuery='60 ft' title="60 ft" />
+        <ModularSwitch filterQuery='90 ft' title="90 ft" />
+        <ModularSwitch filterQuery='120 ft' title="120 ft" />
         <Text style={styles.filterSubjectDivider}
         >Components Needed</Text>
         <ModularSwitch filterQuery='V' title="Verbal" />
@@ -84,9 +98,9 @@ const Filter = (props) => {
         >Spell Duration</Text>
         <ModularSwitch filterQuery='Instantaneous' title="Instantaneous" />
         <ModularSwitch filterQuery='Concentration' title="Concentration" />
-        <ModularSwitch filterQuery='1 minute' title="1 Minute" />
-        <ModularSwitch filterQuery='10' title="10 Minutes" />
-        <ModularSwitch filterQuery='hour' title="Hours" />
+        <ModularSwitch filterQuery='1 m' title="1 Minute" />
+        <ModularSwitch filterQuery='10 m' title="10 Minutes" />
+        <ModularSwitch filterQuery='hours' title="Hours" />
         <ModularSwitch filterQuery='day' title="Days" />
         <Text style={styles.filterSubjectDivider}
         > Casting Time</Text>
@@ -105,7 +119,7 @@ const Filter = (props) => {
         <ModularSwitch filterQuery='bludgeoning damage' title="Bludgeoning" />
         <ModularSwitch filterQuery='cold damage' title="Cold" />
         <ModularSwitch filterQuery='fire damage' title="Fire" />
-        <ModularSwitch filterQuery='Force damage' title="Force" />
+        <ModularSwitch filterQuery='force damage' title="Force" />
         <ModularSwitch filterQuery='lightning damage' title="Lightning" />
         <ModularSwitch filterQuery='necrotic damage' title="Necrotic" />
         <ModularSwitch filterQuery='piercing damage' title="Piercing" />
