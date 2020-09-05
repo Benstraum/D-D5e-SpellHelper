@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Text, View, Button, Switch, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import styles from '../styles'
 
 const ModularSwitch = (props) => {
     const [isEnabled, setIsEnabled] = useState(false);
+    useEffect(()=>{
+       props.filterQueryReducer.some(el=> el.query ===props.filterQuery) && setIsEnabled(true)
+    },[])
     const toggleSwitch = (query, param) => {
         isEnabled === false ?
             props.dispatch({ type: 'SET_QUERIES', payload: {query:query,param:param} })
@@ -33,6 +36,6 @@ const ModularSwitch = (props) => {
 }
 
 const mapStateToProps = (state) => ({
-    state
+  filterQueryReducer: state.filterQueryReducer,
 });
 export default connect(mapStateToProps)(ModularSwitch);

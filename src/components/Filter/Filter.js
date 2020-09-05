@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Text, ScrollView, View, Button } from 'react-native';
 import { connect } from 'react-redux';
 import styles from '../styles'
@@ -9,6 +9,9 @@ import ModularSwitch from '../ModularSwitch/ModularSwitch'
 import * as RootNavigation from '../../RootNavigation.js';
 
 const Filter = (props) => {
+  const sendToScreen = () => {
+    RootNavigation.navigate('Filtered Spell List')
+}
   const inclusiveFilter = () => {
     // test cases
     let list = props.allSpells
@@ -21,7 +24,8 @@ const Filter = (props) => {
         item[el.param].includes(el.query)&&  newSpellList.push(item)
     })  
     }
-    console.log(newSpellList)
+  props.dispatch({type:'SET_FILTER_LIST', payload:newSpellList})
+    sendToScreen()
   }
   const exclusiveFilter = () => {
     // test cases
@@ -39,7 +43,8 @@ const Filter = (props) => {
     queries.length ===truthyDetector && newSpellList.push(item)
     truthyDetector = 0
   }
-    console.log(newSpellList)
+  props.dispatch({type:'SET_FILTER_LIST', payload:newSpellList})
+    sendToScreen()
   }
   return (
     <ScrollView style={{ backgroundColor: 'black', flex: 1 }}>

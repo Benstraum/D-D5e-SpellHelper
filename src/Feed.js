@@ -52,6 +52,14 @@ const Feed = (props) => {
             name="Filtered Spell List" 
             component={FilteredSpellsPage} 
             />
+            <Stack.Screen 
+            options={{
+                headerStyle:{backgroundColor:'#21211f'},
+                headerTintColor:'white'
+            }} 
+            name="Filter Details" 
+            component={SelectedSpell} 
+            />
         </Stack.Navigator>
         )
     }
