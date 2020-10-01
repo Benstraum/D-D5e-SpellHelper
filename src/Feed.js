@@ -7,7 +7,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { navigationRef } from './RootNavigation';
 
-import {Icon} from 'semantic-ui-react'
+
 //components
 import Filter from './components/Filter/Filter'
 import Spells from './components/Spells/Spells.js'
@@ -34,13 +34,7 @@ const Feed = (props) => {
             name="Spell Details" 
             component={SelectedSpell} 
             />
-        </Stack.Navigator>
-        )
-    }
-    const createFilterStack = () =>{
-        return (
-            <Stack.Navigator initialRoutename={'Filter'} >
-            <Stack.Screen options={{headerShown: false}} 
+                <Stack.Screen options={{headerShown: false}} 
             name="Filter" 
             component={Filter} 
             />
@@ -63,6 +57,32 @@ const Feed = (props) => {
         </Stack.Navigator>
         )
     }
+    // const createFilterStack = () =>{
+    //     return (
+    //         <Stack.Navigator initialRoutename={'Filter'} >
+    //         <Stack.Screen options={{headerShown: false}} 
+    //         name="Filter" 
+    //         component={Filter} 
+    //         />
+    //         <Stack.Screen 
+    //         options={{
+    //             headerStyle:{backgroundColor:'#21211f'},
+    //             headerTintColor:'white'
+    //         }} 
+    //         name="Filtered Spell List" 
+    //         component={FilteredSpellsPage} 
+    //         />
+    //         <Stack.Screen 
+    //         options={{
+    //             headerStyle:{backgroundColor:'#21211f'},
+    //             headerTintColor:'white'
+    //         }} 
+    //         name="Filter Details" 
+    //         component={SelectedSpell} 
+    //         />
+    //     </Stack.Navigator>
+    //     )
+    // }
     return (
         <NavigationContainer ref={navigationRef}>
             <Tab.Navigator initialRouteName={'Spells'}
@@ -85,10 +105,6 @@ const Feed = (props) => {
              }}>
                 <Tab.Screen name="Spells"
                     children={createSpellStack}
-                    
-                />
-                <Tab.Screen name="Filter"
-                    component={createFilterStack}
                     
                 />
             </Tab.Navigator>

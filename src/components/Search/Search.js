@@ -1,7 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
 import { Text, TextInput, View } from 'react-native';
+import { Icon } from 'react-native-elements';
 import { connect } from 'react-redux'
+
+import * as RootNavigation from '../../RootNavigation.js';
 
 const Search = (props) => {
     const [spellName, setSpellName] = useState('');
@@ -21,9 +24,15 @@ const Search = (props) => {
     }
     return (
         <View style={{ backgroundColor: '#21211f', flexDirection: 'row', justifyContent:'space-evenly', paddingVertical: 15, alignItems: 'center' }}>
-            <Text onPress={() => reset()}
+            {/* <Text onPress={() => reset()}
                 style={{ fontSize: 18,fontWeight:'bold' ,color: '#FF3838', marginLeft: 15 }}
-            >Reset</Text>
+            >Reset</Text> */}
+            <Icon 
+            onPress={() => reset()}
+            name='autorenew'
+            type='material'
+            color= '#FF3838'
+            />
             <TextInput
             accessibilityLabel='Searchbar'
                 style={{ backgroundColor: 'white', borderRadius: 10, padding: 10 }}
@@ -33,9 +42,24 @@ const Search = (props) => {
                 value={spellName}
                 onChangeText={spellName => setSpellName(spellName)}
             />
-            <Text onPress={() => filter()}
+            <Icon 
+            onPress={() => filter()}
+            name='search'
+            type='material'
+            color= '#FF3838'
+            />
+            <Text>
+                |
+            </Text>
+            <Icon 
+            onPress={() =>RootNavigation.navigate('Filter')}
+            name='settings'
+            type='material'
+            color= '#FF3838'
+            />
+            {/* <Text onPress={() => filter()}
                 style={{ fontSize: 18,fontWeight:'bold' , color: '#FF3838', marginRight: 15 }}
-            >Search</Text>
+            >Search</Text> */}
         </View>
     )
 }

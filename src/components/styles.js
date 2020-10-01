@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     spellLevelMapItem: {
         backgroundColor: '#21211f',
         zIndex: 1,
-        borderRadius: 14,
+        borderRadius: 8,
         padding: 15,
         flexDirection: 'row',
         justifyContent: 'space-between'
@@ -65,6 +65,7 @@ const styles = StyleSheet.create({
     },
     filterSubjectDivider: {
         color: 'white',
+        backgroundColor:'dark grey',
         fontSize: 22,
         opacity: 1,
         width: '100%',
